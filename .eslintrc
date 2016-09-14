@@ -1,0 +1,39 @@
+{
+  "plugins": ["angular"],
+  "extends": ["eslint:recommended", "angular"],
+  "ecmaFeatures": {
+    "modules": true
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "mocha": true,
+    "jasmine": true,
+    "node": true
+
+  },
+  "rules": {
+    "quotes": [2, "single", "avoid-escape"],
+    "new-cap": 0,
+    "no-extend-native":0,
+    "no-console": 0,
+    "no-underscore-dangle": 0,
+    "no-unused-expressions": 0,
+    "no-mixed-requires": 0,
+    "no-eval": 0,
+    "angular/di": [
+      2,
+      "$inject"
+    ]
+  },
+  "globals" : {
+    "chai"       : false,
+    "describe"   : false,
+    "it"         : false,
+    "before"     : false,
+    "beforeEach" : false,
+    "after"      : false,
+    "afterEach"  : false,
+    "inject"     : false
+  }
+}

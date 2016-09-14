@@ -1,0 +1,32 @@
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Group</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody ng-repeat="food in $ctrl.items">
+    <tr>
+        <td class="id">{{food.offset + 1}}</td>
+        <td class="name">{{food.name}}</td>
+        <td class="group">{{food.group}}</td>
+        <td class="actions">
+            {{$ctrl.goToReport}}
+            <a title="View Report" class="view" href="#" ng-click="$ctrl.goToReport($event, food)">
+                <span class="glyphicon glyphicon-eye-open"></span>
+            </a>
+            <a title="Add to Favorite" href="#" ng-click="$ctrl.addToFavorite($event,food)" class="add"  ng-if="!food.favorite">
+                <span class="glyphicon glyphicon-bookmark"></span>
+            </a>
+
+            <a title="Remove from Favorite" href="#" ng-click="$ctrl.removeFromFavorite($event,food)" class="remove" ng-if="food.favorite">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+

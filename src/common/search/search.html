@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-8 col-xs-8">
+                <input type="text" class="form-control" id="input-search" ng-model="$ctrl.query" placeholder="Type food name here">
+            </div>
+            <div class="col-md-2 col-xs-2">
+                <button type="submit" ng-click="$ctrl.getList()" class="btn btn-default">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="col-md-12" style="margin-top: 20px">
+            <div ng-if="$ctrl.loading === true">
+                <strong>Loading ....</strong>
+            </div>
+            <div class="table-responsive" ng-if="$ctrl.result.total > 0">
+
+                <result-table items="$ctrl.result.item"></result-table>
+            </div>
+
+            <div ng-if="$ctrl.result.length === 0 && $ctrl.loading === false">
+                <strong>No results found...</strong>
+            </div>
+
+        </div>
+    </div>
+</div>
