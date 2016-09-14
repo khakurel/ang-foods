@@ -1,0 +1,41 @@
+<navbar></navbar>
+<div class="panel panel-default" ng-if="$ctrl.id.length > 0">
+    <div ng-if="$ctrl.loading === true">
+        <strong>Loading ....</strong>
+    </div>
+
+    <div ng-if="$ctrl.hasResult()">
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                <h4>Basic Report > {{$ctrl.result.name}}</h4>
+            </div>
+            <div class="panel-body">
+                <strong>Nutrition Facts</strong>
+            </div>
+
+
+            <ul class="list-group" ng-repeat="(key, value) in $ctrl.result.nutrients | groupBy: 'group'">
+                <li class="list-group-item disabled">{{key}}</li>
+                <li class="list-group-item" ng-repeat="nutrient in value">
+                    <strong>{{nutrient.name}}:</strong> {{nutrient.value}}{{nutrient.unit}}
+                </li>
+            </ul>
+
+        </div>
+
+
+    </div>
+</div>
+<div class="panel panel-default" ng-if="$ctrl.id.length === 0">
+    <div class="panel-heading" ng-if="$ctrl.result.length > 0">
+        <h4>Favorites</h4>
+    </div>
+    <div class="panel-body">
+        <result-table items="$ctrl.result" on-delete="$ctrl.onDelete()" ng-if="$ctrl.result.length > 0"></result-table>
+        <div class="alert alert-warning" role="alert" style=" margin: 5%;" ng-if="$ctrl.result.length === 0">
+            Your favorites food list is empty.
+            You can add to favorites from <a ui-sref="home">home page</a>
+        </div>
+    </div>
+</div>

@@ -3,7 +3,6 @@ dist/
 .env/
 log.html
 output.xml
-report.html
 *.png
 .idea
 npm-debug.log
