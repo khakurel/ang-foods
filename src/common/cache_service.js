@@ -8,10 +8,10 @@ const toParams = (params = {}) => {
         return '';
     }
     params.max = params.max || 25; // default page size
-    return '&' + _.map(params, (value, key)=> `${key}=${encodeURIComponent(value)}`).join('&')
+    return '&' + _.map(params, (value, key) => `${key}=${encodeURIComponent(value)}`).join('&')
 };
 
-const getApiURL = (action, params = {})=> `${APP_CONFIG.API_URL}/${action}?format=json&api_key=${APP_CONFIG.API_KEY}${toParams(params)}`;
+const getApiURL = (action, params = {}) => `${APP_CONFIG.API_URL}/${action}?format=json&api_key=${APP_CONFIG.API_KEY}${toParams(params)}`;
 
 class CacheService {
 
@@ -29,7 +29,7 @@ class CacheService {
     }
 
     getOrFetch(options = {}) {
-        const cacheKey = btoa(getApiURL(options.action, options.params)), //cache key or generate new key base on options.
+        const cacheKey = _.escape(`data-${options.action}-${toParams(options.params)}`), //cache key or generate new key base on options.
             data = store.find(cacheKey),
             deferred = this.$q.defer();
 

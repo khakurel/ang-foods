@@ -11,10 +11,12 @@ class SearchController {
         this.result = [];
         this.service.getList(this.query)
             .then(res => {
-                _.each(res.data.list.item, item => item.favorite = this.service.isExistInFavorite(item.ndbno) !== undefined);
+                _.each(res.data.list.item, item => {
+                    item.favorite = this.service.isExistInFavorite(item.ndbno) !== undefined
+                });
                 this.result = res.data.list;
             })
-            .finally(()=>this.loading = false);
+            .finally(() => this.loading = false);
 
     }
 
